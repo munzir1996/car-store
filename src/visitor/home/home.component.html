@@ -1,0 +1,553 @@
+	<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+	
+		<!--welcome-hero start -->
+		<section id="home" class="welcome-hero">
+
+			<!-- top-area Start -->
+			<div class="top-area">
+				<div class="header-area">  
+          <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">SayaraTech<span></span></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav> -->
+					<!-- Start Navigation -->
+				    <nav class="navbar navbar-expand-lg bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+				        <div class="container">
+
+				            <!-- Start Header Navigation -->
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="index.html">SayaraTech<span></span></a>
+
+				            </div><!--/.navbar-header-->
+				            <!-- End Header Navigation -->
+
+				            <!-- Collect the nav links, forms, and other content for toggling -->
+				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class=" scroll active"><a href="#home">home</a></li>
+				                    <li class="scroll"><a href="#service">service</a></li>
+				                    <li class="scroll"><a href="#featured-cars">featured cars</a></li>
+				                    <li class="scroll"><a href="#new-cars">new cars</a></li>
+				                    <li class="scroll"><a href="#brand">brands</a></li>
+				                    <li class="scroll"><a href="#contact">contact</a></li>
+				                    <li class="scroll"><a [routerLink]="['/account/login']">Login</a></li>
+				                    <li class="scroll"><a [routerLink]="['/account/register']">sell your car</a></li>
+				                </ul><!--/.nav -->
+                        
+				            </div><!-- /.navbar-collapse -->
+				        </div><!--/.container-->
+				    </nav><!--/nav-->
+				    <!-- End Navigation -->
+				</div><!--/.header-area-->
+			    <div class="clearfix"></div>
+
+			</div><!-- /.top-area-->
+			<!-- top-area End -->
+
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>get your desired car in resonable price</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore   magna aliqua. 
+					</p>
+					<button class="welcome-btn" onclick="window.location.href='#'">contact us</button>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="model-search-content">
+							<div class="row">  
+								<div class="col-md-offset-1 col-md-2 col-sm-12">
+									<div class="single-model-search">
+										<h2>select year</h2>
+										<div class="model-select-icon">
+											<ng-select class="form-control" (change)="selectedYear($event)" [placeholder]="'Year' | localize"
+											name="carYear"
+											required
+											[(ngModel)]="CarAd.car_year"  
+											 >
+											 <ng-option  value="0">لا يوجد</ng-option>
+											 <ng-option  value="2024">2024</ng-option>
+											 <ng-option  value="2023">2023</ng-option>
+											 <ng-option  value="2022">2022</ng-option>
+											 <ng-option  value="2021">2021</ng-option>
+											 <ng-option  value="2020">2020</ng-option>
+											 <ng-option  value="2019">2019</ng-option>
+										   </ng-select>			
+										</div><!-- /.model-select-icon -->
+									</div>
+									<div class="single-model-search">
+										<h2>Models Engin</h2>
+										<div class="model-select-icon">
+											<ng-select class="form-control" (change)="selectedModelEnginlId($event)" [placeholder]="'ModelsEngin' | localize"
+											name="modelEngin"
+											required
+											[(ngModel)]="car.carModelsEngineId"  
+											#modelEnginModel="ngModel"
+											#modelEnginEl  >
+											<ng-option  value="0">لا يوجد</ng-option>
+											  <ng-option *ngFor="let modelEngin of modelEngins"  
+											  [value]="modelEngin.id">{{modelEngin.name}}</ng-option>
+										   </ng-select>											
+										</div><!-- /.model-select-icon -->
+									</div>
+								</div>
+								
+								<div class="col-md-offset-1 col-md-2 col-sm-12">
+									<div class="single-model-search">
+										<h2>select model</h2>
+										<div class="model-select-icon">
+											<ng-select class="form-control" (change)="selectedModelId($event)" [placeholder]="'Models' | localize"
+											name="model"
+											required
+											[(ngModel)]="car.carModelId"  
+											#carmodelModel="ngModel"
+											#carmodelEl  >
+											<ng-option  value="0">لا يوجد</ng-option>
+											  <ng-option *ngFor="let model of models"  
+											  [value]="model.id">{{model.name}}</ng-option>
+										   </ng-select>
+										</div><!-- /.model-select-icon -->
+									</div>
+									<div class="single-model-search">
+										<h2>select price</h2>
+										<div class="model-select-icon">
+											<ng-select class="form-control" (change)="selectedPrice($event)" [placeholder]="'Price' | localize"
+											name="carPrice"
+											required
+											[(ngModel)]="CarAd.price"    
+											 >
+											 <ng-option  value="0">لا يوجد</ng-option>
+											 <ng-option  value="100000">100000 or less</ng-option>
+											 <ng-option  value="90000">90000 or less</ng-option>
+											 <ng-option  value="80000">80000 or less</ng-option>
+											 <ng-option  value="70000">70000 or less </ng-option>
+											 <ng-option  value="60000">60000 or less</ng-option>
+											 <ng-option  value="50000">50000 or less</ng-option>
+										   </ng-select>	
+										</div><!-- /.model-select-icon -->
+									</div>
+								</div>
+								<div class="col-md-offset-1 col-md-2 col-sm-12">
+									<div class="single-model-search">
+										<h2>select vendor</h2>
+										<div class="model-select-icon">
+											<ng-select  class="form-control" (change)="selectedVendorId($event)" [placeholder]="'Vendors' | localize"
+											name="vendor"
+											required
+											[(ngModel)]="car.carVendorId"
+											#vendorModel="ngModel"
+											#vendorEl  >
+											<ng-option  value="0">لا يوجد</ng-option>
+											  <ng-option *ngFor="let vendor of vendors"  
+											  [value]="vendor.id">{{vendor.name}}</ng-option>
+										   </ng-select>
+										   <abp-validation-summary
+											[control]="vendorModel"
+											[controlEl]="vendorEl"
+										  ></abp-validation-summary>
+										</div>
+										<!-- /.model-select-icon -->
+									</div>
+									<div class="single-model-search">
+										<h2>Car Fule Type</h2>
+										<div class="model-select-icon">
+											<ng-select class="form-control" (change)="selectedCarFuleTypelId($event)" [placeholder]="'CarFuleType' | localize"
+											name="modelEngin"
+											required
+											[(ngModel)]="car.carFuleTypeId"  
+											#carFuleTypeModel="ngModel"
+											#carFuleTypeEl  >
+											<ng-option  value="0">لا يوجد</ng-option>
+											  <ng-option *ngFor="let carFuleType of CarFuleTypes"  
+											  [value]="carFuleType.id">{{carFuleType.name}}</ng-option>
+										   </ng-select>											
+										</div><!-- /.model-select-icon -->
+									</div>
+								</div>
+								<div class="col-md-2 col-sm-12">
+									<div class="single-model-search text-center">
+										<button class="welcome-btn model-search-btn" (click)="searchCars()">
+											search
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section><!--/.welcome-hero-->
+		<!--welcome-hero end -->
+		<section id="featured-cars" class="featured-cars">
+			<div class="container">
+				<div class="section-header">
+					<p>checkout <span>the</span> featured cars</p>
+					<h2>featured cars</h2>
+				</div><!--/.section-header-->
+				<div class="featured-cars-content">
+					<div class="row" >
+						<div *ngFor="let carAd of carAds" class="col-lg-3 col-md-4 col-sm-6" >
+							<div class="single-featured-cars" (click)="viewAdDetails(carAd?.id)">
+								<div class="featured-img-box">
+									<div class="featured-cars-img">
+										<img [src]="carAd.coverLink" alt="cars">
+									</div>
+									<div class="featured-model-info">
+										<p>
+											model: {{carAd?.car_year}}
+											<span class="featured-mi-span" *ngIf="carAd?.car_Walkway_KMS > 0">{{carAd?.car_Walkway_KMS}}km</span> 
+											<span class="featured-mi-span" *ngIf="carAd?.car_Walkway_KMS == 0">0km</span> 
+											<span class="featured-hp-span">{{carAd?.cars?.carModels?.name}}</span>				 
+											<span *ngIf="carAd?.is_automatic == true">اوتوماتيك</span>
+											<span *ngIf="carAd?.is_automatic == false">عادي</span>
+										</p>
+									</div>
+								</div>
+								<div class="featured-cars-txt">
+									<h2><a href="#">{{carAd.title}}</a></h2>
+									<h3>{{carAd.price}}</h3>
+									<p>
+										{{carAd.describtion}} 
+									</p>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.featured-cars-->
+		<!--service start -->
+		<section id="service" class="service">
+			<div class="container">
+				<div class="service-content">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car"></i>
+								</div>
+								<h2><a href="#">largest dealership <span> of</span> car</a></h2>
+								<p>
+									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia.  
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car-repair"></i>
+								</div>
+								<h2><a href="#">unlimited repair warrenty</a></h2>
+								<p>
+									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia.  
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car-1"></i>
+								</div>
+								<h2><a href="#">insurence support</a></h2>
+								<p>
+									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia. 
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.service-->
+		<!--service end-->
+
+		<!--new-cars start -->
+		
+		<!--featured-cars end -->
+
+		<!-- clients-say strat -->
+		<section id="clients-say"  class="clients-say">
+			<div class="container">
+				<div class="section-header">
+					<h2>what our clients say</h2>
+				</div><!--/.section-header-->
+				<div class="row">
+					<div class="owl-carousel testimonial-carousel">
+						<div class="col-sm-3 col-xs-12">
+							<div class="single-testimonial-box">
+								<div class="testimonial-description">
+									<div class="testimonial-info">
+										<div class="testimonial-img">
+											<img src="../../assets/assets/images/clients/c1.png" alt="image of clients person" />
+										</div><!--/.testimonial-img-->
+									</div><!--/.testimonial-info-->
+									<div class="testimonial-comment">
+										<p>
+											Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan rem aperiam, eaque ipsa quae ab illo inventore verit. 
+										</p>
+									</div><!--/.testimonial-comment-->
+									<div class="testimonial-person">
+										<h2><a href="#">tomas lili</a></h2>
+										<h4>new york</h4>
+									</div><!--/.testimonial-person-->
+								</div><!--/.testimonial-description-->
+							</div><!--/.single-testimonial-box-->
+						</div><!--/.col-->
+						<div class="col-sm-3 col-xs-12">
+							<div class="single-testimonial-box">
+								<div class="testimonial-description">
+									<div class="testimonial-info">
+										<div class="testimonial-img">
+											<img src="../../assets/assets/images/clients/c2.png" alt="image of clients person" />
+										</div><!--/.testimonial-img-->
+									</div><!--/.testimonial-info-->
+									<div class="testimonial-comment">
+										<p>
+											Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan rem aperiam, eaque ipsa quae ab illo inventore verit. 
+										</p>
+									</div><!--/.testimonial-comment-->
+									<div class="testimonial-person">
+										<h2><a href="#">romi rain</a></h2>
+										<h4>london</h4>
+									</div><!--/.testimonial-person-->
+								</div><!--/.testimonial-description-->
+							</div><!--/.single-testimonial-box-->
+						</div><!--/.col-->
+						<div class="col-sm-3 col-xs-12">
+							<div class="single-testimonial-box">
+								<div class="testimonial-description">
+									<div class="testimonial-info">
+										<div class="testimonial-img">
+											<img src="../../assets/assets/images/clients/c3.png" alt="image of clients person" />
+										</div><!--/.testimonial-img-->
+									</div><!--/.testimonial-info-->
+									<div class="testimonial-comment">
+										<p>
+											Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan rem aperiam, eaque ipsa quae ab illo inventore verit. 
+										</p>
+									</div><!--/.testimonial-comment-->
+									<div class="testimonial-person">
+										<h2><a href="#">john doe</a></h2>
+										<h4>washington</h4>
+									</div><!--/.testimonial-person-->
+								</div><!--/.testimonial-description-->
+							</div><!--/.single-testimonial-box-->
+						</div><!--/.col-->
+					</div><!--/.testimonial-carousel-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+
+		</section><!--/.clients-say-->	
+		<!-- clients-say end -->
+
+		<!--brand strat -->
+		<section id="brand"  class="brand">
+			<div class="container">
+				<div class="brand-area">
+					<div class="owl-carousel owl-theme brand-item">
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br1.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br2.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br3.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br4.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br5.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+
+						<div class="item">
+							<a href="#">
+								<img src="../../assets/assets/images/brand/br6.png" alt="brand-image" />
+							</a>
+						</div><!--/.item-->
+					</div><!--/.owl-carousel-->
+				</div><!--/.clients-area-->
+
+			</div><!--/.container-->
+
+		</section><!--/brand-->	
+		<!--brand end -->
+
+		<!--blog start -->
+		<section id="blog" class="blog"></section><!--/.blog-->
+		<!--blog end -->
+
+		<!--contact start-->
+		<footer id="contact"  class="contact">
+			<div class="container">
+				<div class="footer-top">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<div class="footer-logo">
+									<a href="index.html">SayaraTech</a>
+								</div>
+								<p>
+									Ased do eiusm tempor incidi ut labore et dolore magnaian aliqua. Ut enim ad minim veniam.
+								</p>
+								<div class="footer-contact">
+									<p>info&#64;themesine.com</p>
+									<p>+1 (885) 2563154554</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<div class="single-footer-widget">
+								<h2>about devloon</h2>
+								<ul>
+									<li><a href="#">about us</a></li>
+									<li><a href="#">career</a></li>
+									<li><a href="#">terms <span> of service</span></a></li>
+									<li><a href="#">privacy policy</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<div class="single-footer-widget">
+								<h2>top brands</h2>
+								<div class="row">
+									<div class="col-md-7 col-xs-6">
+										<ul>
+											<li><a href="#">BMW</a></li>
+											<li><a href="#">lamborghini</a></li>
+											<li><a href="#">camaro</a></li>
+											<li><a href="#">audi</a></li>
+											<li><a href="#">infiniti</a></li>
+											<li><a href="#">nissan</a></li>
+										</ul>
+									</div>
+									<div class="col-md-5 col-xs-6">
+										<ul>
+											<li><a href="#">ferrari</a></li>
+											<li><a href="#">porsche</a></li>
+											<li><a href="#">land rover</a></li>
+											<li><a href="#">aston martin</a></li>
+											<li><a href="#">mersedes</a></li>
+											<li><a href="#">opel</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-offset-1 col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<h2>news letter</h2>
+								<div class="footer-newsletter">
+									<p>
+										Subscribe to get latest news  update and informations
+									</p>
+								</div>
+								<div class="hm-foot-email">
+									<div class="foot-email-box">
+										<input type="text" class="form-control" placeholder="Add Email">
+									</div><!--/.foot-email-box-->
+									<div class="foot-email-subscribe">
+										<span><i class="fa fa-arrow-right"></i></span>
+									</div><!--/.foot-email-icon-->
+								</div><!--/.hm-foot-email-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<div class="row">
+						<div class="col-sm-6">
+							<p>
+								&copy; copyright.designed and developed by <a href="https://www.themesine.com/">SayaraTech</a>.
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-6">
+							<div class="footer-social">
+								<a href="#"><i class="fa fa-facebook"></i></a>	
+								<a href="#"><i class="fa fa-instagram"></i></a>
+								<a href="#"><i class="fa fa-linkedin"></i></a>
+								<a href="#"><i class="fa fa-pinterest-p"></i></a>
+								<a href="#"><i class="fa fa-behance"></i></a>	
+							</div>
+						</div>
+					</div>
+				</div><!--/.footer-copyright-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+        </footer><!--/.contact-->
+		<!--contact end-->
+
+
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="../../assets/assets/js/jquery.js"></script>  
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="../../assets/assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="../../assets/assets/js/bootsnav.js"></script>    
+
+		<!--owl.carousel.js-->
+        <script src="../../assets/assets/js/owl.carousel.min.js"></script>
+
+		<script src="https://cdnjs.clousdflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="../../assets/assets/js/custom.js"></script>

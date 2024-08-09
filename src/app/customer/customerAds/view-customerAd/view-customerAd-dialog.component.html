@@ -1,0 +1,380 @@
+<div [@routerTransition]>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1>{{ "CarAdDetails" | localize }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ibox card">
+    <div class="container-fluid card-body">
+      <div class="row" >
+        <div class="col-sm-12">
+          <div class="card text-center" style="width: 20rem;">
+            <img class="card-img-top effectfront" [src]="CarAd.coverLink" alt="Card image cap" >         
+          </div>
+        </div>
+        <div class="col-sm-2" *ngFor="let cai of carAdImages">
+          <div class="card text-center border border-primary" style="width: 15rem;">  
+            <img class="card-img-top effectfront" [src]="cai?.link" alt="Card image cap" >         
+          </div>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="modal-body">
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Title" | localize }}
+              </label>
+              <div class="col-md-9">
+                <input
+                readonly
+                  type="text"
+                  class="form-control"
+                  name="title"
+                  id="title"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="CarAd.title"
+                  #titleModel="ngModel"
+                  #titleEl
+                />
+                <abp-validation-summary
+                  [control]="titleModel"
+                  [controlEl]="titleEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Describtion" | localize }}
+              </label>
+              <div class="col-md-9">
+                <textarea
+                readonly
+                  type="text"
+                  class="form-control"
+                  name="describtion"
+                  id="describtion"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="CarAd.describtion"
+                  #describtionModel="ngModel"
+                  #describtionEl
+                  ></textarea>
+                <abp-validation-summary
+                  [control]="describtionModel"
+                  [controlEl]="describtionEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Price" | localize }}
+              </label>
+              <div class="col-md-9">
+                <input
+                readonly
+                  type="text"
+                  class="form-control"
+                  name="price"
+                  id="price"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="CarAd.price"
+                  #priceModel="ngModel"
+                  #priceEl
+                />
+                <abp-validation-summary
+                  [control]="priceModel"
+                  [controlEl]="priceEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Vendor" | localize }} 
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedVendorId($event)" [placeholder]="'Vendors' | localize"
+                name="vendor"
+                [disabled]="true"
+                required
+                [(ngModel)]="CarAd.cars.carVendor.name"
+                #vendorModel="ngModel"
+                #vendorEl  >
+                  <ng-option *ngFor="let vendor of vendors"  
+                  [value]="vendor.id">{{vendor.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="vendorModel"
+                [controlEl]="vendorEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Model" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedModelId($event)" [placeholder]="'Models' | localize"
+                [disabled]="true"
+                name="model"
+                required
+                [(ngModel)]="CarAd.cars.carModels.name"  
+                #carmodelModel="ngModel"
+                #carmodelEl  >
+                  <ng-option *ngFor="let model of models"  
+                  [value]="model.id">{{model.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="carmodelModel"
+                [controlEl]="carmodelEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "ModelsEngin" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedModelEnginlId($event)" [placeholder]="'ModelsEngin' | localize"
+                [disabled]="true"
+                name="modelEngin"
+                required
+                [(ngModel)]="CarAd.cars.carModelsEngines.name"  
+                #modelEnginModel="ngModel"
+                #modelEnginEl  >
+                  <ng-option *ngFor="let modelEngin of modelEngins"  
+                  [value]="modelEngin.id">{{modelEngin.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="modelEnginModel"
+                [controlEl]="modelEnginEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Color" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedColorlId($event)" [placeholder]="'Color' | localize"
+                [disabled]="true"
+                name="modelEngin"
+                required
+                [(ngModel)]="CarAd.cars.carColors.name"  
+                #colorModel="ngModel"
+                #colorEl  >
+                  <ng-option *ngFor="let color of colors"  
+                  [value]="color.id">{{color.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="colorModel"
+                [controlEl]="colorEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "CarFuleType" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedCarFuleTypelId($event)" [placeholder]="'CarFuleType' | localize"
+                [disabled]="true"
+                name="modelEngin"
+                required
+                [(ngModel)]="CarAd.cars.carFuleTypes.name"  
+                #carFuleTypeModel="ngModel"
+                #carFuleTypeEl  >
+                  <ng-option *ngFor="let carFuleType of CarFuleTypes"  
+                  [value]="carFuleType.id">{{carFuleType.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="carFuleTypeModel"
+                [controlEl]="carFuleTypeEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "City" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedCityId($event)" [placeholder]="'City' | localize"
+                [disabled]="true"
+                name="city"
+                required
+                [(ngModel)]="CarAd.smallAreas.areas.cities.name"  
+                #cityModel="ngModel"
+                #cityEl  >
+                  <ng-option *ngFor="let city of cities"  
+                  [value]="city.id">{{city.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="cityModel"
+                [controlEl]="cityEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Area" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedAreaId($event)" [placeholder]="'Area' | localize"
+                [disabled]="true"
+                name="area"
+                required
+                [(ngModel)]="CarAd.smallAreas.areas.name"  
+                #areaModel="ngModel"
+                #areaEl  >
+                  <ng-option *ngFor="let area of areas"  
+                  [value]="area.id">{{area.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="areaModel"
+                [controlEl]="areaEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "SmallArea" | localize }}
+              </label>
+              <div class="col-md-9">
+                <ng-select (change)="selectedSmallAreaId($event)" [placeholder]="'SmallArea' | localize"
+                [disabled]="true"
+                name="smallArea"
+                required
+                [(ngModel)]="CarAd.smallAreas.name"  
+                #smallAreaModel="ngModel"
+                #smallAreaEl  >
+                  <ng-option *ngFor="let smallArea of smallAreas"  
+                  [value]="smallArea.id">{{smallArea.name}}</ng-option>
+               </ng-select>
+               <abp-validation-summary
+                [control]="smallAreaModel"
+                [controlEl]="smallAreaEl"
+              ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Gear type" | localize }}
+              </label>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-check form-check-inline" style="display: flex;">
+                      <input [checked]="CarAd.is_automatic == true" class="form-check-input" type="radio" id="automaticGear" value="option1" (change)="automaticCarSelected($event)" >
+                      <label class="form-check-label" for="automaticGear" style="font-size: small;margin-right: 5px;">اوتوماتيك</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-check form-check-inline" style="display: flex;">
+                      <input [checked]="CarAd.is_automatic == false" class="form-check-input" type="radio" id="normalGear" value="option1" (change)="normalGearSelected($event)">
+                      <label class="form-check-label" for="normalGear" style="font-size: small;margin-right: 5px;"> عادي</label>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+               
+                <abp-validation-summary
+                  [control]="car_yearModel"
+                  [controlEl]="car_yearEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Year" | localize }}
+              </label>
+              <div class="col-md-9">
+                <input
+                readonly
+                  type="text"
+                  class="form-control"
+                  name="car_year"
+                  id="car_year"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="CarAd.car_year"
+                  #car_yearModel="ngModel"
+                  #car_yearEl
+                />
+                <abp-validation-summary
+                  [control]="car_yearModel"
+                  [controlEl]="car_yearEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "Car type" | localize }}
+              </label>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-check form-check-inline" style="display: flex;">
+                      <input [checked]="CarAd.cars.is_new_car == true" class="form-check-input" type="radio" id="inlineCheckbox1" value="option1" (change)="newCarSelected($event)">
+                      <label class="form-check-label" for="inlineCheckbox1" style="font-size: small;margin-right: 5px;"> جديد</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-check form-check-inline" style="display: flex;">
+                      <input [checked]="CarAd.cars.is_new_car == false" class="form-check-input" type="radio" id="inlineCheckbox1" value="option1" (change)="usedCarSelected($event)">
+                      <label class="form-check-label" for="inlineCheckbox1" style="font-size: small;margin-right: 5px;">مستعمل</label>
+                    </div>
+                  </div>
+                </div>
+                
+               
+                <abp-validation-summary
+                  [control]="car_yearModel"
+                  [controlEl]="car_yearEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            <div class="form-group row required">
+              <label class="col-md-3 col-form-label" for="name">
+                {{ "CarWalkwayKMS" | localize }}
+              </label>
+              <div class="col-md-9">
+                <input
+                readonly
+                  type="text"
+                  class="form-control"
+                  name="carWalkwayKMS"
+                  id="carWalkwayKMS"
+                  maxlength="128"
+                  required
+                  [(ngModel)]="CarAd.car_Walkway_KMS"
+                  #carWalkwayKMSModel="ngModel"
+                  #carWalkwayKMSEl
+                />
+                <abp-validation-summary
+                  [control]="carWalkwayKMSModel"
+                  [controlEl]="carWalkwayKMSEl"
+                ></abp-validation-summary>
+              </div>
+            </div>
+            
+         
+          </div>
+        </div>
+        <br><br>
+       
+        <br><br>
+        <!-- <div class="col-sm-12">
+          <button type="button" (click)="save()" class="btn btn-primary">Save Changes</button>
+          <br><br>
+        </div> -->
+      </div>
+    </div>
+  </section>
+</div>  
